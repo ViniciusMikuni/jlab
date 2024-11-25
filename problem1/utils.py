@@ -32,6 +32,20 @@ class OUActionNoise:
             self.x_prev = self.x_initial
         else:
             self.x_prev = np.zeros_like(self.mean)
+            
+            
+class GaussianActionNoise:
+    '''Class that adds stochasticity to samples '''
+    def __init__(self, mean =0, std_deviation=1.0):
+        self.mean = mean
+        self.std_dev = std_deviation
+
+    def __call__(self):
+        x = np.random.normal(loc=self.mean,scale=self.std_dev)
+        return x
+
+  
+            
 
 
 class RLTrainer:
